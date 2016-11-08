@@ -1,0 +1,847 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="FatDoge" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="国内网址 www.ngrok.cc 可点击进入查看中文教程ngrok - 直通本地服务器的隧道(主页)”我想将NAT与防火墙之后的本地服务器直连网络”  ngrok是什么?ngrok是一个反向代理，它可以从公共端点在本地运行的Web服务之间创造一个安全的隧道。ngrok捕获和分析所有的流量通过隧道后检查和重放。
+ngrok 2.xngrok 2.x是所有当前发展努力的重点，它是1.x的前身。（源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FatDoge">
+<meta property="og:url" content="http://blog.fatdoge.cn/2016/10/24/ngrok/index.html">
+<meta property="og:site_name" content="FatDoge">
+<meta property="og:description" content="国内网址 www.ngrok.cc 可点击进入查看中文教程ngrok - 直通本地服务器的隧道(主页)”我想将NAT与防火墙之后的本地服务器直连网络”  ngrok是什么?ngrok是一个反向代理，它可以从公共端点在本地运行的Web服务之间创造一个安全的隧道。ngrok捕获和分析所有的流量通过隧道后检查和重放。
+ngrok 2.xngrok 2.x是所有当前发展努力的重点，它是1.x的前身。（源">
+<meta property="og:image" content="https://travis-ci.org/inconshreveable/ngrok.svg">
+<meta property="og:updated_time" content="2016-10-24T10:26:01.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FatDoge">
+<meta name="twitter:description" content="国内网址 www.ngrok.cc 可点击进入查看中文教程ngrok - 直通本地服务器的隧道(主页)”我想将NAT与防火墙之后的本地服务器直连网络”  ngrok是什么?ngrok是一个反向代理，它可以从公共端点在本地运行的Web服务之间创造一个安全的隧道。ngrok捕获和分析所有的流量通过隧道后检查和重放。
+ngrok 2.xngrok 2.x是所有当前发展努力的重点，它是1.x的前身。（源">
+<meta name="twitter:image" content="https://travis-ci.org/inconshreveable/ngrok.svg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6321579355805844000',
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://blog.fatdoge.cn/2016/10/24/ngrok/"/>
+
+
+  <title>  | FatDoge </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1260329348&web_id=1260329348" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="http://odwup6q5f.bkt.clouddn.com/headlogo.jpg"
+             alt="FatDoge"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">FatDoge</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">一叶知秋 一叶障目</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-letter">
+          <a href="/msg" rel="section">
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-24T17:49:47+08:00" content="2016-10-24">
+              2016-10-24
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/24/ngrok/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/24/ngrok/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/10/24/ngrok/" class="leancloud_visitors" data-flag-title="">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://travis-ci.org/inconshreveable/ngrok" target="_blank" rel="external"><img src="https://travis-ci.org/inconshreveable/ngrok.svg" alt="Build
+status"></a></p>
+<h4 id="国内网址-www-ngrok-cc-可点击进入查看中文教程"><a href="#国内网址-www-ngrok-cc-可点击进入查看中文教程" class="headerlink" title="国内网址 www.ngrok.cc 可点击进入查看中文教程"></a>国内网址 <em><a href="http://www.ngrok.cc" target="_blank" rel="external">www.ngrok.cc</a></em> 可点击进入查看中文教程</h4><h1 id="ngrok-直通本地服务器的隧道-主页"><a href="#ngrok-直通本地服务器的隧道-主页" class="headerlink" title="ngrok - 直通本地服务器的隧道(主页)"></a>ngrok - 直通本地服务器的隧道(<a href="https://ngrok.com" target="_blank" rel="external">主页</a>)</h1><h3 id="”我想将NAT与防火墙之后的本地服务器直连网络”"><a href="#”我想将NAT与防火墙之后的本地服务器直连网络”" class="headerlink" title="”我想将NAT与防火墙之后的本地服务器直连网络”  "></a>”我想将NAT与防火墙之后的本地服务器直连网络”  <a href="https://ngrok.com/static/img/overview.png" target="_blank" rel="external"></a></h3><h2 id="ngrok是什么"><a href="#ngrok是什么" class="headerlink" title="ngrok是什么?"></a>ngrok是什么?</h2><p>ngrok是一个反向代理，它可以从公共端点在本地运行的Web服务之间创造一个安全的隧道。<br>ngrok捕获和分析所有的流量通过隧道后检查和重放。</p>
+<h2 id="ngrok-2-x"><a href="#ngrok-2-x" class="headerlink" title="ngrok 2.x"></a>ngrok 2.x</h2><p>ngrok 2.x是所有当前发展努力的重点，它是1.x的前身。（源代码不可用）</p>
+<p><strong>注意</strong> 这个库包括ngrok 1.x的代码。</p>
+<h2 id="ngrok-1-x-项目现状"><a href="#ngrok-1-x-项目现状" class="headerlink" title="ngrok 1.x 项目现状"></a>ngrok 1.x 项目现状</h2><p>ngrok1.x除了确保工程继续编译不再由作者开发、支持或维持。贡献政策有以下准则：</p>
+<ol>
+<li>针对该存储库的所有问题将被关闭，除非他们证明事故或其他ngrok功能完全失效。</li>
+<li>所有问题只对1.x有效，对2.x的问题都将被关闭。</li>
+<li>没有新的功能将被添加。任何新功能的pull请求都将被关闭。请fork项目。</li>
+<li>欢迎对修复现有的漏洞提出请求或改进文档。</li>
+</ol>
+<h4 id="ngrok-1-x-托管式服务"><a href="#ngrok-1-x-托管式服务" class="headerlink" title="ngrok 1.x 托管式服务"></a>ngrok 1.x 托管式服务</h4><p>从2013年初到2016年4月7日，ngrok.com一直提供pay-what-you-want的1.x托管服务,之后将它只运行2.x服务。</p>
+<h2 id="产品使用"><a href="#产品使用" class="headerlink" title="产品使用"></a>产品使用</h2><p><strong>在产品中不要使用这个版本(1.x )的服务</strong>. 客户端和服务器都已被确认有严重的可靠性问题，包括内存和文件描述符的泄漏以及崩溃。由于服务器是一个插件，所以并没有提供高可靠性。建议您在任何生产质量系统中运行2.0版本。</p>
+<h2 id="我用ngrok能干什么？"><a href="#我用ngrok能干什么？" class="headerlink" title="我用ngrok能干什么？"></a>我用ngrok能干什么？</h2><ul>
+<li>使用ngrok.com的子域名穿透任何NAT或防火墙之后的http服务。</li>
+<li>使用ngrok.com的随机端口穿透任何NAT或防火墙之后的TCP服务。</li>
+<li>通过隧道传输检查所有的HTTP请求/响应。</li>
+<li>重播任何在隧道传输的请求。</li>
+</ul>
+<h2 id="ngrok有益于何种用途？"><a href="#ngrok有益于何种用途？" class="headerlink" title="ngrok有益于何种用途？"></a>ngrok有益于何种用途？</h2><ul>
+<li>暂时性的共享一个只在你的开发机器上运行的网站。</li>
+<li>在Hackathon中演示一个未部署的应用程序。</li>
+<li>由于ngrok允许你重播这些请求,你可以开发任何消耗webhooks（HTTP回调）的服务。</li>
+<li>通过检查HTTP流量调试与理解任何Web服务。</li>
+<li>在机器上运行那些被防火墙隔绝于网络的服务。</li>
+</ul>
+<h2 id="开发ngrok"><a href="#开发ngrok" class="headerlink" title="开发ngrok"></a>开发ngrok</h2><p><a href="https://ngrok.com/docs" target="_blank" rel="external">ngrok开发者文档</a></p>
+<h2 id="使用参考网站"><a href="#使用参考网站" class="headerlink" title="使用参考网站"></a>使用参考网站</h2><p><a href="http://dorole.com/tag/ngrok/" target="_blank" rel="external">Dorole’Blog</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/07/yourname/" rel="next" title="新海诚-你的名字">
+                <i class="fa fa-chevron-left"></i> 新海诚-你的名字
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/05/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/24/ngrok/"
+           data-title="" data-url="http://blog.fatdoge.cn/2016/10/24/ngrok/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://odwup6q5f.bkt.clouddn.com/headlogo.jpg"
+               alt="FatDoge" />
+          <p class="site-author-name" itemprop="name">FatDoge</p>
+          <p class="site-description motion-element" itemprop="description">静</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://fatdoge.cn" target="_blank" title="FatDogeの家">
+                  
+                    <i class="fa fa-fw fa-home"></i>
+                  
+                  FatDogeの家
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fatdoge" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fatdoge" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=113860295" target="_blank" title="网易云音乐">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  网易云音乐
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hdu.edu.cn" title="HDU" target="_blank">HDU</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#国内网址-www-ngrok-cc-可点击进入查看中文教程"><span class="nav-number">1.</span> <span class="nav-text">国内网址 www.ngrok.cc 可点击进入查看中文教程</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ngrok-直通本地服务器的隧道-主页"><span class="nav-number"></span> <span class="nav-text">ngrok - 直通本地服务器的隧道(主页)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#”我想将NAT与防火墙之后的本地服务器直连网络”"><span class="nav-number"></span> <span class="nav-text">”我想将NAT与防火墙之后的本地服务器直连网络”  </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngrok是什么"><span class="nav-number"></span> <span class="nav-text">ngrok是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngrok-2-x"><span class="nav-number"></span> <span class="nav-text">ngrok 2.x</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngrok-1-x-项目现状"><span class="nav-number"></span> <span class="nav-text">ngrok 1.x 项目现状</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ngrok-1-x-托管式服务"><span class="nav-number">1.</span> <span class="nav-text">ngrok 1.x 托管式服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#产品使用"><span class="nav-number"></span> <span class="nav-text">产品使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我用ngrok能干什么？"><span class="nav-number"></span> <span class="nav-text">我用ngrok能干什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngrok有益于何种用途？"><span class="nav-number"></span> <span class="nav-text">ngrok有益于何种用途？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发ngrok"><span class="nav-number"></span> <span class="nav-text">开发ngrok</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用参考网站"><span class="nav-number"></span> <span class="nav-text">使用参考网站</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FatDoge</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"fatdoge"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("pEUNSmIOUPk1jIRvWfEqdRLc-gzGzoHsz", "NupnAdXxRyow0Y5PeHdhqNNK");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

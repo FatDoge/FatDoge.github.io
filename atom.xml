@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>FatDoge</title>
+  <subtitle>一叶知秋 一叶障目</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.fatdoge.cn/"/>
+  <updated>2016-11-06T06:37:16.075Z</updated>
+  <id>http://blog.fatdoge.cn/</id>
+  
+  <author>
+    <name>FatDoge</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ngrok</title>
+    <link href="http://blog.fatdoge.cn/2016/11/06/ngrok/"/>
+    <id>http://blog.fatdoge.cn/2016/11/06/ngrok/</id>
+    <published>2016-11-05T16:00:00.000Z</published>
+    <updated>2016-11-06T06:37:16.075Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://travis-ci.org/inconshreveable/ngrok" target="_blank" rel="external"><img src="https://travis-ci.org/inconshreveable/ngrok.svg" alt="Build
+status"></a></p>
+<h4 id="国内网址-www-ngrok-cc-可点击进入查看中文教程"><a href="#国内网址-www-ngrok-cc-可点击进入查看中文教程" class="headerlink" title="国内网址 www.ngrok.cc 可点击进入查看中文教程"></a>国内网址 <em><a href="http://www.ngrok.cc" target="_blank" rel="external">www.ngrok.cc</a></em> 可点击进入查看中文教程</h4><h1 id="ngrok-直通本地服务器的隧道-主页"><a href="#ngrok-直通本地服务器的隧道-主页" class="headerlink" title="ngrok - 直通本地服务器的隧道(主页)"></a>ngrok - 直通本地服务器的隧道(<a href="https://ngrok.com" target="_blank" rel="external">主页</a>)</h1><h3 id="”我想将NAT与防火墙之后的本地服务器直连网络”"><a href="#”我想将NAT与防火墙之后的本地服务器直连网络”" class="headerlink" title="”我想将NAT与防火墙之后的本地服务器直连网络”  "></a>”我想将NAT与防火墙之后的本地服务器直连网络”  <a href="https://ngrok.com/static/img/overview.png" target="_blank" rel="external"></a></h3><h2 id="ngrok是什么"><a href="#ngrok是什么" class="headerlink" title="ngrok是什么?"></a>ngrok是什么?</h2><p>ngrok是一个反向代理，它可以从公共端点在本地运行的Web服务之间创造一个安全的隧道。<br>ngrok捕获和分析所有的流量通过隧道后检查和重放。</p>
+<h2 id="ngrok-2-x"><a href="#ngrok-2-x" class="headerlink" title="ngrok 2.x"></a>ngrok 2.x</h2><p>ngrok 2.x是所有当前发展努力的重点，它是1.x的前身。（源代码不可用）</p>
+<p><strong>注意</strong> 这个库包括ngrok 1.x的代码。</p>
+<h2 id="ngrok-1-x-项目现状"><a href="#ngrok-1-x-项目现状" class="headerlink" title="ngrok 1.x 项目现状"></a>ngrok 1.x 项目现状</h2><p>ngrok1.x除了确保工程继续编译不再由作者开发、支持或维持。贡献政策有以下准则：</p>
+<ol>
+<li>针对该存储库的所有问题将被关闭，除非他们证明事故或其他ngrok功能完全失效。</li>
+<li>所有问题只对1.x有效，对2.x的问题都将被关闭。</li>
+<li>没有新的功能将被添加。任何新功能的pull请求都将被关闭。请fork项目。</li>
+<li>欢迎对修复现有的漏洞提出请求或改进文档。</li>
+</ol>
+<h4 id="ngrok-1-x-托管式服务"><a href="#ngrok-1-x-托管式服务" class="headerlink" title="ngrok 1.x 托管式服务"></a>ngrok 1.x 托管式服务</h4><p>从2013年初到2016年4月7日，ngrok.com一直提供pay-what-you-want的1.x托管服务,之后将它只运行2.x服务。</p>
+<h2 id="产品使用"><a href="#产品使用" class="headerlink" title="产品使用"></a>产品使用</h2><p><strong>在产品中不要使用这个版本(1.x )的服务</strong>. 客户端和服务器都已被确认有严重的可靠性问题，包括内存和文件描述符的泄漏以及崩溃。由于服务器是一个插件，所以并没有提供高可靠性。建议您在任何生产质量系统中运行2.0版本。</p>
+<h2 id="我用ngrok能干什么？"><a href="#我用ngrok能干什么？" class="headerlink" title="我用ngrok能干什么？"></a>我用ngrok能干什么？</h2><ul>
+<li>使用ngrok.com的子域名穿透任何NAT或防火墙之后的http服务。</li>
+<li>使用ngrok.com的随机端口穿透任何NAT或防火墙之后的TCP服务。</li>
+<li>通过隧道传输检查所有的HTTP请求/响应。</li>
+<li>重播任何在隧道传输的请求。</li>
+</ul>
+<h2 id="ngrok有益于何种用途？"><a href="#ngrok有益于何种用途？" class="headerlink" title="ngrok有益于何种用途？"></a>ngrok有益于何种用途？</h2><ul>
+<li>暂时性的共享一个只在你的开发机器上运行的网站。</li>
+<li>在Hackathon中演示一个未部署的应用程序。</li>
+<li>由于ngrok允许你重播这些请求,你可以开发任何消耗webhooks（HTTP回调）的服务。</li>
+<li>通过检查HTTP流量调试与理解任何Web服务。</li>
+<li>在机器上运行那些被防火墙隔绝于网络的服务。</li>
+</ul>
+<h2 id="开发ngrok"><a href="#开发ngrok" class="headerlink" title="开发ngrok"></a>开发ngrok</h2><p><a href="https://ngrok.com/docs" target="_blank" rel="external">ngrok开发者文档</a></p>
+<h2 id="使用参考网站"><a href="#使用参考网站" class="headerlink" title="使用参考网站"></a>使用参考网站</h2><p><a href="http://dorole.com/tag/ngrok/" target="_blank" rel="external">Dorole’Blog</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://travis-ci.org/inconshreveable/ngrok&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;https://travis-ci.org/inconshreveable/ngro
+    
+    </summary>
+    
+      <category term="教程" scheme="http://blog.fatdoge.cn/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="教程" scheme="http://blog.fatdoge.cn/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://blog.fatdoge.cn/2016/11/05/hello-world/"/>
+    <id>http://blog.fatdoge.cn/2016/11/05/hello-world/</id>
+    <published>2016-11-05T12:17:29.068Z</published>
+    <updated>2016-11-05T15:27:39.747Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+      <category term="教程" scheme="http://blog.fatdoge.cn/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>新海诚-你的名字</title>
+    <link href="http://blog.fatdoge.cn/2016/10/07/yourname/"/>
+    <id>http://blog.fatdoge.cn/2016/10/07/yourname/</id>
+    <published>2016-10-07T13:53:01.000Z</published>
+    <updated>2016-11-05T15:28:36.499Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://odwup6q5f.bkt.clouddn.com/yournamepic1.jpg" alt="你的名字"><br><img src="http://odwup6q5f.bkt.clouddn.com/yournamepic2.jpg" alt="你的名字"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://odwup6q5f.bkt.clouddn.com/yournamepic1.jpg&quot; alt=&quot;你的名字&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://odwup6q5f.bkt.clouddn.com/yournamepic2.jpg&quot; 
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.fatdoge.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="电影" scheme="http://blog.fatdoge.cn/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>想看看外面的世界吗？</title>
+    <link href="http://blog.fatdoge.cn/2016/10/05/viewoutside/"/>
+    <id>http://blog.fatdoge.cn/2016/10/05/viewoutside/</id>
+    <published>2016-10-05T04:12:20.000Z</published>
+    <updated>2016-11-05T15:28:12.093Z</updated>
+    
+    <content type="html"><![CDATA[<p>运行你下载的Shadowsocks客户端（下面演示的是Win的客户端使用方法，其他系统的都差不多）。</p>
+<p>Shadowsocks只有一个编辑服务器的窗口，启动后会在右下角托盘显示小飞机图标，右键他会出现一个菜单</p>
+<p><img src="http://odwup6q5f.bkt.clouddn.com/1.jpg" alt=""></p>
+<p>就会出现下图的窗口，填写服务器IP、服务器端口、密码和加密（备注不是必填的，但是养成一个备注的习惯也是不错的），<strong>代理端口不需要动！</strong>这个是本地的端口和服务器无关。</p>
+<p><strong>Shadowsocks</strong>然后点击确定保存并关闭窗口，或者点添加继续添加服务器。</p>
+<p><strong>Shadowsocks原本参考填写格式</strong></p>
+<p><img src="http://odwup6q5f.bkt.clouddn.com/2.jpg" alt=""></p>
+<p><strong>ShadowsocksR 推荐填写格式\<br>记得定期更新{PAC—更新本地PAC为绕过大陆常见域名列表}</strong></p>
+<p><img src="http://odwup6q5f.bkt.clouddn.com/3.png" alt=""></p>
+<p><strong>第三步：启动代理</strong></p>
+<p>在右键菜单里勾选启动系统代理，这时候Shadowsocks就已经启动了，如果账号没问题就可以正常使用了！</p>
+<p>部分浏览器并不是默认的<strong>使用系统代理</strong>所以需要手动调整，一般都是在设置—网络里的。还要注意Chrome只允许一个扩展独占代理设置，所以如果无法使用就检查一些有没有被其他的插件独占了代理设置！<strong>Chrome并不需要扩展辅助Shadowsocks！</strong></p>
+<p><strong>Tips：</strong></p>
+<ul>
+<li><p>原GUI版本需要配合浏览器插件才能使用，新版<strong>无需</strong>浏览器插件配合，直接启用系统代理，配置好后就可以上网了。</p>
+</li>
+<li><p>系统代理模式一项，可以选择“<strong>PAC模式</strong>”和“<strong>全局模式</strong>”。PAC模式即需要代理的网站才代理，不需要代理的则通过本地网络访问，可以理解为，访问国内网站还是和你原来的网络一样，只有访问部分国外网站，才通过shadowsocks服务器。全局模式则是访问所有网站都通过shadowsocks服务器。</p>
+</li>
+<li><p>如何关闭shadowsocks呢？shadowsocks程序直接关闭就行了。</p>
+</li>
+</ul>
+<p>关于PAC模式和全剧模式的区别详细的你可以看这里的解释</p>
+<p><img src="http://odwup6q5f.bkt.clouddn.com/4.jpg" alt=""></p>
+<p>安卓的使用方法也很简单，只要照着选项填写就好了！下面的路由建议选择第三项绕过局域网和大陆，这就相当于电脑的PAC模式，默认是全局的。点击右上角的关闭按钮就会启动代理了！</p>
+<p><img src="http://odwup6q5f.bkt.clouddn.com/5.jpg" alt=""><br>各平台各系统客户端参考下载链接</p>
+<p><a href="http://ishadowsocks.net" target="_blank" rel="external"><em>http://ishadowsocks.net</em></a></p>
+<p><a href="https://github.com/shadowsocks/shadowsocks-iOS/releases/download/2.6.3/ShadowsocksX-2.6.3.dmg" target="_blank" rel="external"><em>https://github.com/shadowsocks/shadowsocks-iOS/releases/download/2.6.3/ShadowsocksX-2.6.3.dmg</em></a></p>
+<p><a href="https://itunes.apple.com/tc/app/shadowsocks/id665729974?mt=8" target="_blank" rel="external"><em>https://itunes.apple.com/tc/app/shadowsocks/id665729974?mt=8</em></a></p>
+<p><a href="https://play.google.com/store/apps/details?id=com.github.shadowsocks" target="_blank" rel="external"><em>https://play.google.com/store/apps/details?id=com.github.shadowsocks</em></a></p>
+<p><a href="https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation" target="_blank" rel="external"><em>https://github.com/shadowsocks/shadowsocks-qt5/wiki/Installation</em></a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;运行你下载的Shadowsocks客户端（下面演示的是Win的客户端使用方法，其他系统的都差不多）。&lt;/p&gt;
+&lt;p&gt;Shadowsocks只有一个编辑服务器的窗口，启动后会在右下角托盘显示小飞机图标，右键他会出现一个菜单&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://od
+    
+    </summary>
+    
+      <category term="教程" scheme="http://blog.fatdoge.cn/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="教程" scheme="http://blog.fatdoge.cn/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>拉图神器多图测试</title>
+    <link href="http://blog.fatdoge.cn/2016/09/17/waifu2xdemo/"/>
+    <id>http://blog.fatdoge.cn/2016/09/17/waifu2xdemo/</id>
+    <published>2016-09-17T13:19:47.000Z</published>
+    <updated>2016-11-05T15:28:23.061Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="本博文用于waifu2x-coffe教程样例测试（图床采用sm-ms）"><a href="#本博文用于waifu2x-coffe教程样例测试（图床采用sm-ms）" class="headerlink" title="本博文用于waifu2x-coffe教程样例测试（图床采用sm.ms）"></a>本博文用于waifu2x-coffe教程样例测试（图床采用sm.ms）</h1><hr>
+<p><strong>原图</strong></p>
+<p><img src="https://ooo.0o0.ooo/2016/09/17/57dd4407783d5.jpg" alt="雷姆调教前.jpg"></p>
+<p><strong>放大后</strong></p>
+<p><img src="https://ooo.0o0.ooo/2016/09/17/57dd4409b142c.png" alt="雷姆调教前(auto_scale)(Level1)(x8.000000).png"></p>
+<p><strong>原图</strong></p>
+<p><img src="https://ooo.0o0.ooo/2016/09/17/57dd44cbbe2e4.jpg" alt="8.jpg"></p>
+<p><strong>放大并压缩后</strong></p>
+<p><img src="https://ooo.0o0.ooo/2016/09/17/57dd44ccc18d9.png" alt="tmpdir__16_9_17_21_28_03.png"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;本博文用于waifu2x-coffe教程样例测试（图床采用sm-ms）&quot;&gt;&lt;a href=&quot;#本博文用于waifu2x-coffe教程样例测试（图床采用sm-ms）&quot; class=&quot;headerlink&quot; title=&quot;本博文用于waifu2x-coffe教程样例
+    
+    </summary>
+    
+      <category term="测试" scheme="http://blog.fatdoge.cn/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="社团" scheme="http://blog.fatdoge.cn/tags/%E7%A4%BE%E5%9B%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HEXO搭建个人博客</title>
+    <link href="http://blog.fatdoge.cn/2016/09/17/blogway/"/>
+    <id>http://blog.fatdoge.cn/2016/09/17/blogway/</id>
+    <published>2016-09-16T16:00:00.000Z</published>
+    <updated>2016-11-05T15:27:26.693Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h4 id="转载于潘柏信的博客：http-leopardpan-github-io"><a href="#转载于潘柏信的博客：http-leopardpan-github-io" class="headerlink" title="转载于潘柏信的博客：http://leopardpan.github.io"></a>转载于潘柏信的博客：<a href="https://leopardpan.github.io" target="_blank" rel="external">http://leopardpan.github.io</a></h4><hr>
+<h2 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h2><p>  Hexo是一个静态博客生成框架，利用hexo与github pages可以很方便的拥有自己的个人博客与相应域名。而这个个人博客的所有东西都可自定义，比如博客的主题可以应用他人成千上百的主题甚至是自己创作的主题。而博客的写作方式也非常的高大上，是程序员式的（在命令指示符中输入各类命令语句达到新建与发布博文的目的。新建的博文在对应文件夹中以xxx.md存在，博文支持markdown语法，本文有介绍。）本网站就是HelloWorld社团其中的社员拥有的个人博客网站。同样是基于Hexo框架和Github pages。</p>
+<a id="more"></a>
+<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><p>　这边教程是针对与Mac的，<a href="http://ibruce.info/2013/11/22/hexo-your-blog/?utm_source=tuicool" target="_blank" rel="external">参考链接</a>，由于原文讲到的hexo是以前的老版本，所以现在的版本配置的时候会有些改动。</p>
+<p>　之前是想着写博客，一方面是给自己做笔记，可以提升自己的写作、总结能力，一个技术点我们会使用，并不难，但是要做到让让别人也能听懂我们讲得，还是需要一定的技巧和经验的。很多类似于CSDN、博客园也都可以写文章，但是页面的样式我，不是太喜欢，简书还算好点得。最近看到一些大神们的博客（在我的友情链接里有），貌似都是用hexo写得，我也依葫芦画瓢的搭建了一个。不罗嗦了，直接上搭建步骤。</p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><h3 id="安装Node（必须）"><a href="#安装Node（必须）" class="headerlink" title="安装Node（必须）"></a>安装Node（必须）</h3><p>作用：用来生成静态页面的<br>到Node.js<a href="https://nodejs.org/" target="_blank" rel="external">官网</a>下载相应平台的最新版本，一路安装即可。</p>
+<h3 id="安装Git（必须）"><a href="#安装Git（必须）" class="headerlink" title="安装Git（必须）"></a>安装Git（必须）</h3><p>作用：把本地的hexo内容提交到github上去.<br>安装Xcode就自带有Git，我就不多说了。</p>
+<h3 id="申请GitHub（必须）"><a href="#申请GitHub（必须）" class="headerlink" title="申请GitHub（必须）"></a>申请GitHub（必须）</h3><p>作用：是用来做博客的远程创库、域名、服务器之类的，怎么与本地hexo建立连接等下讲。<br><a href="https://github.com/" target="_blank" rel="external">github</a>账号我也不再啰嗦了,没有的话直接申请就行了，跟一般的注册账号差不多，SSH Keys，看你自己了，可以不配制，不配置的话以后每次对自己的博客有改动提交的时候就要手动输入账号密码，配置了就不需要了，怎么配置我就不多说了，网上有很多教程。</p>
+<h3 id="正式安装HEXO"><a href="#正式安装HEXO" class="headerlink" title="正式安装HEXO　"></a>正式安装HEXO　</h3><p>Node和Git都安装好后，可执行如下命令安装hexo：</p>
+<pre><code>sudo npm install -g hexo
+</code></pre><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>然后，执行init命令初始化hexo到你指定的目录，我是直接cd到目标目录执行hexo init的。命令：</p>
+<pre><code>hexo init
+</code></pre><p>好啦，至此，全部安装工作已经完成！</p>
+<h3 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h3><p>cd 到你的init目录，执行如下命令，生成静态页面至hexo\public\目录。</p>
+<pre><code>hexo generate （hexo g  也可以）   
+</code></pre><h3 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h3><p>启动本地服务，进行文章预览调试，命令：</p>
+<pre><code>hexo server   
+</code></pre><p>浏览器输入<a href="就可以看到最原始的效果了">http://localhost:4000</a><br>我不知道你们能不能，反正我不能，因为我还有环境没配置好</p>
+<p>我把我报的一些错，和解决方式列出来：</p>
+<h2 id="一"><a href="#一" class="headerlink" title="一"></a>一</h2><pre><code>ERROR Plugin load failed: hexo-server
+</code></pre><p>原因：</p>
+<pre><code>Besides, utilities are separated into a standalone module. hexo.util is not reachable anymore.
+</code></pre><h3 id="解决方法，执行命令："><a href="#解决方法，执行命令：" class="headerlink" title="解决方法，执行命令："></a>解决方法，执行命令：</h3><pre><code>sudo npm install hexo-server
+</code></pre><h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>执行命令hexo server，有如下提示：<br>Usage: hexo<command><br>….</p>
+<p>原因：<br>我认为是没有生成本地服务<br>解决方法，执行命令：</p>
+<pre><code>npm install hexo-server --save
+</code></pre><p>提示：hexo-server@0.1.2 node_modules/hexo-server<br>….<br>表示成功了<a href="https://hexo.io/zh-cn/docs/server.html" target="_blank" rel="external">参考</a></p>
+<p>这个时候再执行：</p>
+<pre><code>hexo-server
+</code></pre><p>得到:</p>
+<pre><code>INFO  Hexo is running at http://0.0.0.0:4000/. Press Ctrl+C to stop.
+</code></pre><p>这个时候再点击<a href="http://0.0.0.0:4000" target="_blank" rel="external">http://0.0.0.0:4000</a>，正常情况下应该是最原始的画面，但是我看到的是：<br>白板和Cannot GET /   几个字<br>原因：<br>由于2.6以后就更新了，我们需要手动配置些东西，我们需要输入下面三行命令：</p>
+<pre><code>npm install hexo-renderer-ejs --save
+npm install hexo-renderer-stylus --save
+npm install hexo-renderer-marked --save
+</code></pre><p>这个时候再重新生成静态文件，命令：</p>
+<pre><code>hexo generate （或hexo g）
+</code></pre><p>启动本地服务器：</p>
+<pre><code>hexo server （或hexo s）
+</code></pre><p>再点击网址<a href="http://0.0.0.0:4000" target="_blank" rel="external">http://0.0.0.0:4000</a> OK终于可以看到属于你自己的blog啦，?，虽然很简陋，但好歹有了一个属于自己的小窝了。<a href="https://disqus.com/home/discussion/bsspirit/hexogithubweb/" target="_blank" rel="external">参考链接</a>，本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。</p>
+<h2 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h2><h3 id="建立Repository"><a href="#建立Repository" class="headerlink" title="建立Repository"></a>建立Repository</h3><p>建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】，固定写法<br>然后建立关联，我的blog在本地/Users/leopard/blog，blog是我之前建的东西也全在这里面，有：</p>
+<pre><code>_config.yml    node_modules    public        source　　　　
+db.json        package.json    scaffolds    themes　　　　　
+</code></pre><p>现在我们需要_config.yml文件，来建立关联，命令：</p>
+<pre><code>vim _config.yml
+</code></pre><p>翻到最下面，改成我这样子的，注意： <code>: 后面要有空格</code></p>
+<pre><code>deploy:
+  type: git
+  repository: https://github.com/leopardpan/leopardpan.github.io.git
+  branch: master
+</code></pre><p>执行如下命令才能使用git部署</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p>网上会有很多说法，有的type是github, 还有repository 最后面的后缀也不一样，是github.com.git，我也踩了很多坑，我现在的版本是hexo: 3.1.1，执行命令hexo -vsersion就出来了,貌似3.0后全部改成我上面这种格式了。<br>忘了说了，我没用SSH Keys如果你用了SSH Keys的话直接在github里复制SSH的就行了，总共就两种协议，相信你懂的。<br>然后，执行配置命令：</p>
+<pre><code>hexo deploy
+</code></pre><p>　然后再浏览器中输入<a href="http://leopardpan.github.io/" target="_blank" rel="external">http://leopardpan.github.io/</a>就行了，我的github的账户叫leopardpan,把这个改成你github的账户名就行了</p>
+<h3 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h3><p>每次部署的步骤，可按以下三步来进行。</p>
+<pre><code>hexo clean
+hexo generate
+hexo deploy
+</code></pre><p>一些常用命令：</p>
+<pre><code>hexo new &quot;postName&quot; #新建文章
+hexo new page &quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
+hexo help  # 查看帮助
+hexo version  #查看Hexo的版本
+</code></pre><p>这里有大量的<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">主题列表</a>使用方法里面<br>都有详细的介绍，我就不多说了。<br>我这里有几款个人认为不错的主题，免去你们，一个一个的选了，欢迎吐槽我的审美，?<br>　<a href="https://github.com/daisygao/hexo-themes-cover" target="_blank" rel="external">Cover</a> - A chic theme with facebook-like cover photo<br>　<a href="https://github.com/henryhuang/oishi" target="_blank" rel="external">Oishi</a> - A white theme based on Landscape plus and Writing.<br>　<a href="https://github.com/hardywu/hexo-theme-sidebar" target="_blank" rel="external">Sidebar</a> - Another theme based on Light with a simple sidebar<br>　<a href="https://github.com/SuperKieran/TKL" target="_blank" rel="external">TKL</a> - A responsive design theme for Hexo. 一个设计优雅的响应式主题<br>　<a href="https://github.com/levonlin/Tinnypp" target="_blank" rel="external">Tinnypp</a> - A clean, simple theme based on Tinny<br>　<a href="https://github.com/yunlzheng/hexo-themes-writing" target="_blank" rel="external">Writing</a> - A small and simple hexo theme based on Light<br>　<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">Yilia</a> - Responsive and simple style 优雅简洁响应式主题，我用得就是这个。<br>　<a href="https://github.com/Voidly/pacman" target="_blank" rel="external">Pacman voidy</a> - A theme with dynamic tagcloud and dynamic snow      </p>
+<h2 id="一些基本路径"><a href="#一些基本路径" class="headerlink" title="一些基本路径"></a>一些基本路径</h2><p>　文章在source/_posts，如果你不怕麻烦的话可以跟我一样直接用vim去编辑，支持markdown语法，你有好的编辑软件，给我也推荐下，感激不尽?。如果想修改头像可以直接在主题的_config.yml文件里面修改，友情链接，之类的都在这里，修改名字在public/index.html里修改，开始打理你的博客吧，有什么问题或者建议，都可以提出来，我会继续完善的。</p>
+<h2 id="Markdown语法参考链接"><a href="#Markdown语法参考链接" class="headerlink" title="Markdown语法参考链接"></a>Markdown语法参考链接</h2><p><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">很实用的例子</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      HEXO配置，HEXO+Github，搭建自己的博客
+    
+    </summary>
+    
+      <category term="教程" scheme="http://blog.fatdoge.cn/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="博客" scheme="http://blog.fatdoge.cn/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>杭电HelloWorld社团招新专用</title>
+    <link href="http://blog.fatdoge.cn/2016/09/16/%E7%A4%BE%E5%9B%A2%E6%8A%A5%E5%90%8D/"/>
+    <id>http://blog.fatdoge.cn/2016/09/16/社团报名/</id>
+    <published>2016-09-16T11:12:30.000Z</published>
+    <updated>2016-11-05T15:28:53.604Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://ooo.0o0.ooo/2016/09/16/57dbd07bcaf22.jpg" alt="QQ图片20160910135558.jpg"></p>
+<hr>
+<p><strong>微信关注齐东野语公众号回复 报名</strong><br><img src="https://ooo.0o0.ooo/2016/09/16/57dbd1531d00a.jpg" alt="qrcode_for_gh_e7eb1fa649b4_430.jpg"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/09/16/57dbd07bcaf22.jpg&quot; alt=&quot;QQ图片20160910135558.jpg&quot;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;微信关注齐东野语公众号回复 报名&lt;/strong&gt;&lt;b
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.fatdoge.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="社团报名" scheme="http://blog.fatdoge.cn/tags/%E7%A4%BE%E5%9B%A2%E6%8A%A5%E5%90%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>程序员风格的修真小说</title>
+    <link href="http://blog.fatdoge.cn/2016/08/26/%E7%A8%8B%E5%BA%8F%E5%91%98%E9%A3%8E%E6%A0%BC%E7%9A%84%E4%BF%AE%E7%9C%9F%E5%B0%8F%E8%AF%B4/"/>
+    <id>http://blog.fatdoge.cn/2016/08/26/程序员风格的修真小说/</id>
+    <published>2016-08-26T04:04:39.000Z</published>
+    <updated>2016-11-05T15:28:44.115Z</updated>
+    
+    <content type="html"><![CDATA[<p>作者：李昭鸿<br>链接：<a href="http://www.zhihu.com/question/32422838/answer/55775344" target="_blank" rel="external">http://www.zhihu.com/question/32422838/answer/55775344</a><br>来源：知乎</p>
+<p>很多人问结衣是新垣结衣还是波多老师，这个问题很深刻。</p>
+<p>答案是，你心里是什么，她就是什么。</p>
+<p>么么你们个哒。</p>
+<hr>
+<p>终有一天我手中的编译器将成为我灵魂的一部分，这世界在我的眼中将被代码重构，我将看到山川无尽银河生灵都汇成二进制的数字河流，过往英雄都在我脑海眼前一一浮现，而我听到无数码农跪倒在我的程序面前呼喊。</p>
+<p>他们叫我代码之神。</p>
+<p>到那个时候，我想我一定可以找回你。</p>
+<hr>
+<p>一</p>
+<p>这是一个属于代码的修真世界。</p>
+<p>这世界里的每一个人，每一个东西，包括高山大海，刀剑风云，其本质都是一串数字流。</p>
+<p>打个比方，如果你知道一块石头的内部数据结构，并且参透其中玄妙，你就能用程序和接口改变它的一切。如果能你参透自己自身这一个复杂的操作系统，就能重新编码自己，获得更大的能力。</p>
+<p>所以你的程序水平的高低，决定了你的牛逼程度。</p>
+<p>我们这些修真者，都叫程序员。</p>
+<p>有人的地方，就有江湖。有江湖的地方，就有代码。</p>
+<p>刚入门的时候，师傅跟我说，我们程序员修的，是一份境界。短短几句的代码里，要有最完美的逻辑，跟最精妙的算法。这本《算法导论》，你暂且拿去研修。</p>
+<p>我们程序员，外修语言，内修算法。以数据为根，算天算地算自己。</p>
+<p>听起来真的好酷。</p>
+<p>但这个江湖，并不平静。几大门派，上有微软谷歌，下至百度阿里，每个门派风格迥异，明面上不曾和气，暗地里更有无数摩擦。</p>
+<p>师傅说，我们知乎派，理论见长。尤其精通健身、阅读、旅行泡妞，指点人生。</p>
+<p>我说师傅你是不是跑题了。</p>
+<p>师父说我们这里三大软狗、哦不，三大软神坐镇，还有无数默默搬砖的程序员，如今也算在乱世立稳了脚跟。</p>
+<p>师傅还说，江湖虽乱，但我们修真之人，说到底还是要修自身，恩恩怨怨都是过眼云烟，自身境界才是万源之本。</p>
+<p>我点了点头。</p>
+<p>师傅又拍了拍我的小脑瓜，慈祥一笑。他说，如果下次天涯派那群人还过来闹事，我们一定要秉承我们的自身理念来处理他们。</p>
+<p>我知道了，我回师傅道，我跟刘看山一定会好言相劝，么么他们个哒哒。</p>
+<p>不。师傅转身过来，鹰眼之中精光毕露，胡须颤动的嘴唇之中，一个字一个字地吐出来。</p>
+<p>灰飞烟灭，一个不留。</p>
+<hr>
+<p>二</p>
+<p>自我开始修真起，我练的便是C++的功夫。</p>
+<p>虽然大师兄跟我说过，不管你学的是什么语言，都是殊途同归。我们修真之人，都不要在乎这些差别，要参透的是程序的本质。</p>
+<p>然后他又说，不过，用Java的都是傻逼。</p>
+<p>大师兄跟我一样，C++的功底深厚，面向对象的各种技能用的精通，只是可惜，他还没有对象。</p>
+<p>我永远忘不了那一天下午，我们知乎派的山门被一众凶恶之徒所踏破，山石飞舞，浮尘弥漫，门派服务器都暂停运行。</p>
+<p>大师兄坐在大殿房顶之上，喝一壶陈年的竹叶青。姿势潇洒，闷骚至极。</p>
+<p>是他们。谁都知道，天涯派不止一次来闹事。</p>
+<p>我从来没见过大师兄出过手。</p>
+<p>天涯派的来人，在烟尘之中现出数个魁梧身影，还夹带了一声大笑和开场白：</p>
+<p>哈哈哈哈哈哈哈，知乎派，hello world！</p>
+<p>大师兄的眼皮都没有眨一下。</p>
+<p>他的手臂之上字符串环流浮现，左手抬起酒壶一饮而尽，右手对着虚空就是一指，那一串字符都消散在空气之中，诡变出无数神秘莫测的代码。</p>
+<p>刹那间风云突变，一阵狂风似有形一般，沿着大师兄所指方向似一条狂龙横冲了过去，一个照面便将几个大汉吹得撞出山门之外，摔了个七荤八素。</p>
+<p>那一霎我屏住呼吸。</p>
+<p>因为他侧面看过去的忧郁眼神真的很像梁朝伟。</p>
+<p>大师兄整了整风中凌乱的发型，说，这就叫快速排序，将风压重新编码，所到之处，寸草不生。你们都还在解码自己，我已经开始操纵世界——天涯跟知乎，就是在这里的差距，懂？</p>
+<p>都他妈的给老子滚。</p>
+<p>从那一刻开始，我才知道，有些人已经可以编码这个世界本身。</p>
+<p>这才是叫修真。</p>
+<hr>
+<p>三</p>
+<p>在知乎里修行了十年，师傅说我可以下山了。</p>
+<p>我已经熟知C++的基本技能，但师傅告诫我千万不要说自己精通C++。他说，这个世界上，没有人可以说，他已经精通C++，所以即算你装逼的时候，也要装得像个样子。比如，你可以说你精通java。</p>
+<p>我点头称是。</p>
+<p>这十年来，我每日苦读《算法导论》和《C++ primer》，精通数据库原理跟操作系统，同龄人之中无人是我敌手，自认为天下哪里都可去得。</p>
+<p>是为年轻气盛，是为势不可挡。</p>
+<p>我下山之后，连连在江湖之中，将一些有一点点小名气的程序员斩于马下。</p>
+<p>他们之中，有些是根基不稳，有些是反应迟钝，有些是冥顽不灵，有些是莽撞愚蠢。</p>
+<p>当然，我现在说起来是云淡风轻，那是因为我在装逼。其实也经过了一番苦战，有过一些辛酸。终于有一天，我将天下程序员排行榜第一千零二十四位的马特给击败，成功登上天下程序员战力排行榜。</p>
+<p>马特这个程序员，有一些狡猾。他占据第一千零二十四位，已经很久没有变过。他精通计算机视觉，经常使用一些幻境击败对手。他比排在他上面的几位更加难缠，所以通常没有人会去挑战他。</p>
+<p>但可惜他遇到了我。</p>
+<p>我未必比马特更精通计算机视觉，但我选择以幻境制他幻境。</p>
+<p>不是我盲目自信。</p>
+<p>寻常高手与人交手，例如马特，会编译代码产生无数生猛幻境，比如让你看到周围都是毒蛇猛兽，比如让你感觉被无数刀光剑影包围，在你虚实不分的时候他只需轻给你一刀就可以结束战斗。</p>
+<p>而我只用幻境产生了一个女人。</p>
+<p>一个刻在马特的内置存储器里无数年的女人。这女人穿着印花的裙子，走过去转一圈，笑眯眯地对他说，今天阳光正好，你要喝一杯吗？</p>
+<p>他败得一塌糊涂。</p>
+<p>以至于我都把他鼻梁打塌了，他还流着鼻血，蠢蠢的望着前面的空气说，你终于回来了？</p>
+<p>差点让江湖上的人以为我与马特有什么陈年往事。</p>
+<p>不管怎么样，我还是击败了马特，这也成为一个不大不小的消息，在江湖里传播。</p>
+<p>从此我有了一个外号，他们叫我杀马特。</p>
+<hr>
+<p>四</p>
+<p>俗话说树大招风，人不能太出名。</p>
+<p>有一天我走进一个江南小镇上的无名酒馆，想喝点酒。我下山的时候十八岁，如今正好一年。十八岁之前，我都没有喝过酒，因为师父说未成年人不许喝酒。</p>
+<p>但今天我决定做一回成年人可以做的事。</p>
+<p>挑了一个无名酒馆的原因是因为，我毕竟没有喝过酒，天知道我能不能喝，要是喝出了点事，这里也并没有人会认识我。</p>
+<p>可没想到还没喝酒就出事了。</p>
+<p>酒馆的柜台后面，一个风情万种的女人转了过来。见到她那一个霎那我脑袋里面闪过很多东西，比如下山的第一个晚上睡在原野上看到的漫天星星，比如生平我编过最精妙的让我拍了三天大腿的算法，像在黑夜里行走了很久的旅人看到的光亮，迷途密林里升起的炊烟，像我在山上见过烤熟一般熔金的落日，像一瞬的昙花，像永恒的碑拓。总之是一些美丽的东西，美丽的东西各有各的共通之处。</p>
+<p>我有点慌了。</p>
+<p>她问我，客官，你要喝点什么嘛？</p>
+<p>我说，三两竹叶青。</p>
+<p>正当我迷迷糊糊地在喝酒的时候，酒馆里来了一群程序员。</p>
+<p>这群人，个个怪异，着红色冲锋衣，背黑色双肩包。但放眼一看便知道水平很高。</p>
+<p>来者不善。</p>
+<p>他们走到我桌前，将我围了起来。为首的一人说，他们是做安全的。</p>
+<p>我心中陡然一惊。因为我看到了他们衣服里藏着的，三百六十度的环形刀刃。</p>
+<p>一百年前，有一个叫奇虎的门派。他们每个人，都有一把神秘的三百六十度的环形刀刃，所以也叫奇虎三六零。他们声称他们的存在，是为了防止世界被破坏，为了保护世界的和平，是为了贯彻爱与真实的勇敢，他们是穿梭在江湖中的三六零。但他们却并不招江湖之中所谓正派的待见，于是一百年前的那场降魔大战，BAT三家联手将其斩灭。</p>
+<p>当然，我们知乎派，也在之中出了不少的力量。近些年听闻他们为复仇而起，专门挑一些过往仇家的新秀下手，没想到这次竟然是我。</p>
+<p>我心中有了个大概，只是皱眉喝酒，问他们所为何事。</p>
+<p>那为首一人，拿过我的酒壶，仰头一灌。最后一滴酒在壶中滴落之时，无数环形刀刃在我身边出现，他的手中也倏地出现一把，朝我迎面砍来。</p>
+<p>竟是偷袭。</p>
+<p>真是不按剧本出牌，哪有这么玩的？素未平生，一见面三句话没说完就要动手？</p>
+<p>我脑海浮起师父送别我下山时候对我说的一句意味深长的话。</p>
+<p>他说人在江湖飘，哪有不挨刀。</p>
+<p>面前刀刃之上闪过的代码我毕生未见，锋利无比，威力惊人。</p>
+<p>我虽鼓动全身能量，将毕生所学顷刻编码，瞬间编译，但也感觉凶多吉少。</p>
+<p>这电光火石一瞬间，只听得铛地一声，数把环形刀刃通通弹落一边，那些黑衣怪人通通倒地。</p>
+<p>我靠，我有这么强？</p>
+<p>只听得酒馆二楼悠悠传来一个女声。要打去别的地方打吧，进来酒钱都没付，还要打我的客人，这是何理？</p>
+<p>原来是酒馆的女老板。</p>
+<p>她从二楼飘飘而落，将我身边灰尘一扫而空，笑如弯月，朱唇轻启。哎呀，吓到小哥你了，真是对不起。</p>
+<p>我以前听大师兄说，对于程序员，只有两种东西是天敌。一种是御姐，一种是萝莉。我说我不信。</p>
+<p>我现在信了。</p>
+<hr>
+<p>五</p>
+<p>女老板说，可以叫她结衣。</p>
+<p>她问我叫什么，我嘟哝了半天，我说我叫杀马特。</p>
+<p>结衣说哈哈哈哈哈哈哈你真可爱我还非主流呢。</p>
+<p>我说结衣，你怎么会这么强。</p>
+<p>她说你不懂，我一个弱女子，不懂点编程之术，在这江湖里怎么开酒馆嘛。</p>
+<p>我说结衣，你怎么这么好看。</p>
+<p>结衣不说话了。</p>
+<p>结衣说，你这个小流氓。</p>
+<p>我说结衣，我大师兄跟我说，我们程序员只有两种天敌，一叫御姐，二是萝莉，你是哪一种？</p>
+<p>结衣说，我都不是。</p>
+<p>我说，哦。其实我心里想着的，是你都是。</p>
+<p>结衣，你跟我一起闯荡江湖去好不好？</p>
+<p>不好，你还没我强。</p>
+<p>哦。那等我比你强了，我们一起去闯荡江湖好不好？</p>
+<p>结衣笑了一下说，不好。</p>
+<p>于是我就住在了酒馆里。</p>
+<p>因为我可能，爱上了这个女人。</p>
+<p>我杀马特曾经以为，我这一辈子就只能爱上一个女人。后来我才知道，这世间有万千行代码，万物都可编译，但你编译不了的，是自己的心。</p>
+<p>结衣是一个看上去很好强，八面玲珑的女人。她的编程水平，比那些排行榜上五百位之后的怂蛋，比如我，不知道高到哪里去了，但是她却在这里经营一个小酒馆。</p>
+<p>我曾经问过为什么，但是结衣不说。</p>
+<p>她只说她在等人。</p>
+<p>我想问她是不是在等她的意中人，但是又不好意思开口。我怕是的，那我可能要伤心。师傅说修真的程序员，不能伤心。伤心的程序员，写不出好的代码。</p>
+<p>所以我也只能等。</p>
+<p>结衣真正笑起来的时候很好看，就像冬天里的火腿三明治，夏天里的咖啡味雪糕，总之又温暖又清新，跟她招待客人的时候的笑完全不一样。</p>
+<p>可惜的是我没见过结衣真正笑几次。</p>
+<p>每一天傍晚的时候，酒馆客人逐渐会变少。结衣会坐在酒馆的楼顶，望着天空变换来变换去的火烧云。姹紫嫣红，波橘云诡，翻江倒海，最后归于平静的火烧云。有一天我坐在结衣旁边，她在看云，我在看她。</p>
+<p>我问结衣说，你为什么每天都在这里看云？</p>
+<p>结衣转过来对我说，那你猜猜看咯。</p>
+<p>我说你可能觉得看云时很远，看我时很近？</p>
+<p>结衣嫣然一笑。</p>
+<p>她说不，我只是在做云计算。</p>
+<p>虽然我不太懂云计算，但我只知道那一霎在屋顶笑起来结衣比天边的火烧云还好看千倍。</p>
+<p>不，一千倍太少，大概是65535倍吧。</p>
+<p>有时候我也会觉得结衣很有少女心。</p>
+<p>每一天的酒馆打烊之后，结衣会坐在酒馆一楼，摆一摆桌椅酒壶，有时候还会把许多酒坛叠起来，或者编程让它们组合出不同的样子。有时候是一个男人，有时候是一个女人，有时候是一家三口。</p>
+<p>此时的结衣十分具有艺术气质。专注、一丝不苟，像我小时候玩积木的时候。</p>
+<p>不同的是，我看得出来她眼睛里寂灭的悲伤。</p>
+<p>我不喜欢悲伤，更不喜欢结衣悲伤。于是有一天这个时候我走上去说一句，嘿，结衣，玩积木啊？<br>结衣头都没转过来。</p>
+<p>她说，不，我只是在建物联网。</p>
+<p>我虽然也不太懂物联网，但我知道我懂她眼睛里面像深海里的灯塔一样，屹立不倒、隐隐闪烁、无处可藏的悲伤。</p>
+<p>有些故事，可能一辈子也不能说出口。</p>
+<p>但有些人，往往看到她第一眼你就懂得。</p>
+<p>正如有些日子，也会不期而至。</p>
+<p>那天酒馆外面都是黑漆漆的云，像有大雨将至。空气沉闷，也没有客人。远处的原野河流，都融进漆黑一片的视线之中，白昼如同黑夜。</p>
+<p>结衣一脸严肃。</p>
+<p>我说结衣，咱们把门关上避一避。</p>
+<p>结衣一言不发，站在门口，看向远方。</p>
+<p>过了一阵，远处黑云之中，竟然出现一个人影。霎时间，雷光闪动，暴雨如注。</p>
+<p>结衣看了我一眼，眼神里似有无尽话语。</p>
+<p>她转身腾空就飞了出去。朝着远处的黑云人影，鼓动着浑身能量，就这么飞了出去。</p>
+<p>我大喊一声结衣，然后也跑了出去。雨越下越大，我只能隐隐看见远处电闪雷鸣，我在混乱之中大喊结衣。</p>
+<p>他们在交战。</p>
+<p>远处代码一行行在云端飞舞盘旋，命令与字节化为巨大的力量，我没有想到结衣竟然强到这个地步。</p>
+<p>举手投足，山河变色。</p>
+<p>我想起大师兄所说的，有人还在解码自身，有人已经操纵世界。</p>
+<p>是一场恶战。</p>
+<p>我只能站在下面看，我不能御空飞行，我甚至都不知道他们交战的具体情况。</p>
+<p>我心急如焚。</p>
+<p>在一个天际的惊雷响彻之后，一道正弦函数冲击波将所有黑云弹射开来，而我只看到结衣在空中坠落的身影。</p>
+<p>拨云见日，阳光普照。</p>
+<p>在很多年之后，当我再回想起这个情形，也还是觉得，即算是临死之时的结衣，在空中的身影，也那么好看。</p>
+<p>如流星坠落，天女下凡。</p>
+<p>我抱着结衣，泣不成声。</p>
+<p>她看着我，怔怔的看着我。</p>
+<p>她说你别哭，真的，这是注定的一天。</p>
+<p>她嘴角有血，眼中有泪，但笑的很好看。</p>
+<p>她说我们家以前侵入过国家数据库系统，被朝廷发现灭门，我侥幸逃脱。但是不管我在哪里，总有一天他们肯定会找上来。</p>
+<p>她说我等这一天很久啦。有个了结也好，这样我就能见到爸爸妈妈了。</p>
+<p>她说很开心认识你。</p>
+<p>她说你是男孩子，要坚强一点。不坚强一点，你怎么成为最好的程序员。</p>
+<p>她说的最后一句话是，杀马特，你一定不要忘了我。</p>
+<p>然后她就再也没有说话了。</p>
+<p>我说对不起。</p>
+<p>我说对不起。</p>
+<p>我甚至都没有问过她说，你有心上人吗？</p>
+<p>我甚至都没有跟她说过，我是真的很喜欢你。</p>
+<p>我甚至都没有吻过她，没有牵过她的手，我们只是这样匆匆遇到，然后匆匆告别。</p>
+<p>她的身体将化成一串数字流，失去结构，流向无尽的原野、河流跟大地，化为三月的春风、杨柳跟雨滴。</p>
+<p>有些东西，是命。</p>
+<p>她是一列注定驶向断崖的列车，而我也注定要当终生的乘客。</p>
+<p>我的整个程序员修真生涯，在这一天，被分割开来。</p>
+<p>对，我杀马特，在这一天之后，是一个一定要成为天下第一的程序员。</p>
+<p>为了结衣。</p>
+<hr>
+<p>六</p>
+<p>并非是单单想给结衣报仇。</p>
+<p>我们程序员的修真之路，内修自己，外修天地。</p>
+<p>当代码可以操控天地这个最为复杂的系统之时，就一定会涉及到世界的本源之处。若这个世界的代码在我眼前一览无遗，或许我可以控制时间。</p>
+<p>或许我可以从时间的bug里，找回结衣。</p>
+<p>这是我这么多年来的，唯一念想。</p>
+<p>毕竟我们程序员，生来就要逆天改命。</p>
+<p>毕竟我们程序员，都是背负至爱之名。</p>
+<p>之后的时间里，我从程序员排行榜上一路飙升，五年之后跻身前十，成为世界上最优秀的程序员之一。</p>
+<p>我树敌无数，也击败无数敌人。他们之中，甚至有自创一门语言的奇才，有号称已然精通C++的装逼犯，有对各类操作系统跟编译原理都熟悉无比的怪才，但是，不管谁，都无法阻挡我杀马特的脚步。</p>
+<p>无人可挡，生来彷徨。</p>
+<p>但，即算是到了我这样的水准，我也依旧无法知道，如何寻找这个世界里时间的bug，甚至都没有一丝头绪。</p>
+<p>每逢debug的夜晚，我都会想起结衣，明媚如歌的笑容，和她从天而落，如佛光普照般的美丽。</p>
+<p>但这又时时提醒了我，我可能真的已经离她远去了，而我无能为力。</p>
+<p>这世间我认识的高手，都无法为我解答这个问题。</p>
+<p>直到有一天，我在山间遇到一个红衣人。</p>
+<p>他是个高手，从看到他码出第一行代码的时候，我就知道，这是个绝顶高手。</p>
+<p>山野相逢，抛却了身份。我跟他把酒言欢，知无不谈，倒也痛快。</p>
+<p>直到我跟他说起关于这世界里，时间的bug。</p>
+<p>他说，这世界极有可能是在一个环形循环之中。说罢他从怀里掏出一把刀，却正是奇虎派的那把三百六十度环形刀刃。</p>
+<p>他说你看这把刀，我派毕生所愿，即是参透这世界的圆之循环，重新编码，到时候天下唾手可得。</p>
+<p>我说，我不想要什么天下，我只要一个女人。</p>
+<p>红衣人哈哈大笑，说，那你加入我们，来我奇虎参透这世界运行之时最底层的命令，参透这循环，说不定你就能重新遇到那个女人。</p>
+<p>对，我没有犹豫，我答应了。</p>
+<p>他说，他叫周红衣。</p>
+<hr>
+<p>七</p>
+<p>我就这么加入了奇虎三六零。</p>
+<p>彼时奇虎正在重整旗鼓，周红衣想要东山再起，他不能少了我这个助力。</p>
+<p>从此我手里多了一把，三百六十度的，环形刀刃。</p>
+<p>萧萧狼烟，江湖恩怨再起。</p>
+<p>人在江湖，真的身不由己。</p>
+<p>我一边参悟奇虎派祖传的代码跟算法，一边帮奇虎派征战天下。</p>
+<p>我是知乎派出身，根正苗红，师傅知我落入魔教之手，竟还帮所谓魔教征战江湖，掀起腥风血雨， 吐出一口老血。他们也曾劝降，但我不为所动。</p>
+<p>我心中，有我自己的编程之道。</p>
+<p>我很清楚我自己在干什么。我很清楚，男孩子，要坚强。</p>
+<p>奇虎的势力扩张得很快，但正邪势不两立，BAT三大派见天下形势如此，便要集结程序员高手部队，重新再剿灭一次奇虎三六零。</p>
+<p>他们说，一百年前能灭的，现在也能灭。</p>
+<p>而他们带队之人，正是当今天下排行第一的程序员，出身知乎、神龙见首不见尾的大师兄。</p>
+<p>大师兄，真的好久不见。</p>
+<p>说实话，虽从一开始，我便知道自己背负的是什么，但我也并未想过，有一天要跟大师兄动手。<br>也许在成为男人的路上，杀死偶像，都是不可避免的一环。</p>
+<p>大师兄还是酒壶一把，桀骜不驯。他说傻小子，你现在过来，还真的来得及。</p>
+<p>我说大师兄，皇皇天下，哪有什么正邪分家。无非是你来我往，你抢我杀。咱们做程序员的都知道，手底下见真章。</p>
+<p>大师兄喝酒，哈哈大笑，他说你有长进，然后把酒壶朝天一扔。</p>
+<p>Talk is cheap，show me the code。</p>
+<hr>
+<p>八</p>
+<p>与大师兄交战之前，我正参悟到这个世界代码的一些关键之处。</p>
+<p>如今一战，倒是针尖对麦芒。大师兄的编程能力，已然步入化境。代码不在手上，已在心中。物质都是数据，规则都是代码，一时间天地轰隆，流云沐风皆能当锋利兵器，重力气压都能做任意改变，我跟大师兄从天到地，战了个平分秋色。</p>
+<p>大师兄说，没想到你小子这么难缠。</p>
+<p>大师兄说，对不起，我必须解决掉你。<br>为了正义。</p>
+<p>我从没见他说过对不起，这正如他一定会放一个前所未见的大招一样可怕。</p>
+<p>大师兄操纵无数代码，打入大地之中，蓦地瞬间，我感觉脚底重力似乎加大了无数倍。</p>
+<p>好沉。</p>
+<p>好一个无限重力流。</p>
+<p>我们这边的程序员，要么被强大重力挤压变形，最舒服的也寸步不能动弹。</p>
+<p>大师兄竟然还没有结束，他接着操纵无数代码，打入遥远天空之中，竟从无垠星海之中召来巨大陨石。</p>
+<p>陨石当空，重力无限。</p>
+<p>这两者相结合，他竟凭他一人之力，要横扫整个奇虎。</p>
+<p>不愧是天下第一的旷世奇才。我承认，面对这样的攻势，我并没有什么好的办法。</p>
+<p>但我也不后悔。</p>
+<p>既然踏上这条路，我就没有打算过回头。</p>
+<p>没有什么值得后悔的，没有什么值得放弃的。</p>
+<p>陨石从我头上落下之时，生死交错的瞬间，我仿佛又看到结衣的脸，看到我过往二十多年击败过的程序员，看到马特怔怔望着前面的空气说话，看到流星和佛光，像电影一般飞驰而过的场面。</p>
+<p>我突然领悟到些什么。</p>
+<p>我在那一瞬也打出无数代码，我打出的代码，跟大师兄的，一模一样。</p>
+<p>复制代码，通常比较容易。</p>
+<p>我脚下重力瞬间又加大无数倍，其他的程序员早已不堪重负，化为一摊数据流。而那个陨石速度越来越快，擦出巨大的热浪火花，空间都变形扭曲，周围一切化为粉末，消散无形。</p>
+<p>我以为那个瞬间我已经死了。</p>
+<p>而我在那一个瞬间，看到了时空的奇点。</p>
+<p>时间是一个圆。</p>
+<p>我靠近它，向死而生。</p>
+<p>前方白光一片。</p>
+<hr>
+<p>九</p>
+<p>我睁开眼。</p>
+<p>眼前是那个熟悉的酒馆。</p>
+<p>我推开木门，走了进去。</p>
+<p>一个风情万种的女人转过来，她问我，客官，你要喝点什么嘛？</p>
+<p>我哽咽一笑。</p>
+<p>说，三两竹叶青。</p>
+<hr>
+<p>转自<a href="http://www.zhihu.com/question/32422838/answer/55775344" target="_blank" rel="external">知乎</a>侵删</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作者：李昭鸿&lt;br&gt;链接：&lt;a href=&quot;http://www.zhihu.com/question/32422838/answer/55775344&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.zhihu.com/questio
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.fatdoge.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="文章" scheme="http://blog.fatdoge.cn/tags/%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>奇奇怪怪的爱情</title>
+    <link href="http://blog.fatdoge.cn/2016/08/24/mylove/"/>
+    <id>http://blog.fatdoge.cn/2016/08/24/mylove/</id>
+    <published>2016-08-24T15:43:24.000Z</published>
+    <updated>2016-11-05T15:27:59.314Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="http://music.163.com/outchain/player?type=2&id=22707003&auto=0&height=66"></iframe>
+
+<hr>
+<p>咱俩一个高中。你读文科我读理科。我记得第一次和你说话是在教学楼和超市之间的路上，我和你打了声招呼，而那是三年来唯一的语言交流。</p>
+<hr>
+<p>一直觉得咱俩有种默契，那种默契是深藏于现实中的第四个维度。别人感受不到，我觉得我感受到了。不知道什么时候开始，听到好听的歌会互相分享，平时遇到的所有事情都想和你说说。我记得你生日前一个晚上，我坐在教室上晚自习，然后拿出一张很小的明信片，在上边用铅笔还有尺子画格子。大概是15×15的格子，因为我在白纸上写字会歪掉。总共225个格子，感觉随便写写就满了，记得那时还在草稿纸上用文言文写了一篇赋，内容我也忘记了，但是我敢肯定我以后都写不出那种赋了。</p>
+<hr>
+<p>我生日时你给了我一本余华的《活着》，当时看的很慢很慢，全部看完之后有一种虚脱的感觉。现在这本书还躺在家里的某个角落，里面夹着你写的明信片，里边对我的称呼是道友。我一直有一种窃喜感，感觉现实咱俩有丝丝缕缕的联系但是看不见摸不着，没人知道其实我和你谈天说地时双方都字字珠玑。</p>
+<hr>
+<p>你真的是一个很棒很棒的女孩，我以前没想过也不敢想会和你有什么现实中的交集，可能永远只是那个屏幕那头的道友，我会偶尔和你聊天听你说你心爱的哥哥，互推好听的歌曲，分享喜怒哀乐然后像两条平行线一样波澜无痕的各自生活。</p>
+<hr>
+<p>感谢上天把你送到我面前了。生命中一颗颗不知道颜色不知道滋味的糖，你竟然是其中一颗。我觉得你的颜色是蓝色的，包括了海蓝还有天蓝。你的味道是水和云。我不想让你有什么乱七八糟的想法，我也很久没表达自己的感情。你真的像一道光，我再疲倦再狼狈只要你在我就成为你眼中那个优秀的人。不单单为了我自己，也为了你我也要一直变的优秀。</p>
+<hr>
+<p>你像个孩子，有时候很任性很傲娇。恋爱是咱双方的事，有什么不开心的一定要说出来不能憋在心里，会变质的。我谈过恋爱并不就全是坏事，至少我更了解怎么才能好好维持一段感情，怎么避免那些导致情况恶化的举动。我呐，希望你能更加冷静，大事化小小事化了，不都说夫妻床头吵架床尾合么。恋爱也不是成天腻下来的，你要相信那个过程，总有一天我们会习惯对方的存在，就像亲人一样。</p>
+<hr>
+<p>那本《我不喜欢这世界，我只喜欢你》静静躺在书桌上，我想当你的F君，好吗？</p>
+<hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;http://music.163.com/outchain/player?
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.fatdoge.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="文章" scheme="http://blog.fatdoge.cn/tags/%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>天使</title>
+    <link href="http://blog.fatdoge.cn/2016/08/22/myangel/"/>
+    <id>http://blog.fatdoge.cn/2016/08/22/myangel/</id>
+    <published>2016-08-22T14:46:18.000Z</published>
+    <updated>2016-11-05T15:27:50.231Z</updated>
+    
+    <content type="html"><![CDATA[<p>每一个人都有一个一直守护着他/她的天使，这个天使如果觉得你的生活太过悲哀，你的心情太过难过，那么他就会化身成为你身边的某一个人<br>，也许是你的朋友，也许是你的恋人，也许是你的父母，也许是你仅仅见过一面的陌生人，这些人安静地出现在你的生命里，陪你度过一小段快乐的时光，然后他再不动声色的离开。于是你的人生就有了幸福的回忆，即使以后你的道路上布满了风雪，可是你依然可以想起曾经幸福的事情，你就可以依然勇敢。所以那些默默离开我们的人，其实都是天使回归了天国，比如那些离开的朋友，那些曾经给过你帮助的陌生人，那些曾经爱过最后分开的人，曾经你向他问过路的男生，曾经讲过一个很好听的笑话逗你开心的同学，曾经唱过一首好听的歌给你听的歌手，写过一本好书的作家，他们都是善良的天使。也许你有段时间会对于他们的消失感到伤心或者失落，会四处寻找他们去了哪里，到了什么国度，可是到最后，你都会相信，他们在这个世界的某一个角落，安静而满足地生活着。于是曾经的那些失落和伤心都将不复存在，时间是最伟大的治愈师。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;每一个人都有一个一直守护着他/她的天使，这个天使如果觉得你的生活太过悲哀，你的心情太过难过，那么他就会化身成为你身边的某一个人&lt;br&gt;，也许是你的朋友，也许是你的恋人，也许是你的父母，也许是你仅仅见过一面的陌生人，这些人安静地出现在你的生命里，陪你度过一小段快乐的时光，然后
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://blog.fatdoge.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="文章" scheme="http://blog.fatdoge.cn/tags/%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+</feed>
